@@ -19,7 +19,7 @@ function Home() {
       <header className='text-center py-8'>
         <h1 className='text-4xl font-bold'>Welcome to Our Store</h1>
       </header>
-      <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6'>
+      <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 my-5'>
         {products.map((product) => (
           <ProductCard key={product._id} product={product} />
         ))}
