@@ -9,7 +9,8 @@ import {
 } from '../utils/api';
 
 function Cart() {
-  const { user, token, resetTotalItems } = useContext(AuthContext);
+  const { user, token, setTotalItems, resetTotalItems } =
+    useContext(AuthContext);
   const navigate = useNavigate();
   const [cartItems, setCartItems] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -26,6 +27,12 @@ function Cart() {
         const cartData = await fetchCartById(user.cart._id);
         if (cartData) {
           setCartItems(cartData);
+
+          const initialTotal = cartData.reduce(
+            (total, item) => total + item.quantity,
+            0
+          );
+          setTotalItems(initialTotal);
         } else {
           setCartItems([]);
         }
@@ -38,7 +45,7 @@ function Cart() {
     };
 
     loadCart();
-  }, [user, navigate]);
+  }, [user, navigate, setTotalItems]);
 
   const handlePurchase = async () => {
     try {
@@ -51,6 +58,66 @@ function Cart() {
       }
     } catch (error) {
       console.error('Error during purchase:', error);
+    }
+  };
+
+  const updateQuantity = async (productId, newQuantity) => {
+    try {
+      const result = await updateProductQuantity(
+        user.cart._id,
+        productId,
+        newQuantity,
+        token
+      );
+
+      if (result) {
+        setCartItems((prevItems) =>
+          prevItems.map((item) =>
+            item.product._id === productId
+              ? { ...item, quantity: newQuantity }
+              : item
+          )
+        );
+
+        // Recalcular totalItems basado en el nuevo estado del carrito
+        setTotalItems(
+          (prevTotal) =>
+            prevTotal +
+            (newQuantity -
+              cartItems.find((item) => item.product._id === productId).quantity)
+        );
+      } else {
+        console.error('Failed to update product quantity');
+      }
+    } catch (error) {
+      console.error('Error updating product quantity:', error);
+    }
+  };
+
+  const removeItem = async (productId) => {
+    try {
+      const result = await removeProductFromCart(
+        user.cart._id,
+        productId,
+        token
+      );
+
+      if (result) {
+        const updatedCartItems = cartItems.filter(
+          (item) => item.product._id !== productId
+        );
+        setCartItems(updatedCartItems);
+
+        const updatedTotalItems = updatedCartItems.reduce(
+          (total, item) => total + item.quantity,
+          0
+        );
+        setTotalItems(updatedTotalItems);
+      } else {
+        console.error('Failed to remove product from cart');
+      }
+    } catch (error) {
+      console.error('Error removing product:', error);
     }
   };
 
@@ -71,51 +138,6 @@ function Cart() {
       (total, item) => total + item.product.price * item.quantity,
       0
     );
-  };
-
-  const updateQuantity = async (productId, newQuantity) => {
-    try {
-      const result = await updateProductQuantity(
-        user.cart._id,
-        productId,
-        newQuantity,
-        token
-      );
-
-      if (result) {
-        setCartItems((prevItems) =>
-          prevItems.map((item) =>
-            item.product._id === productId
-              ? { ...item, quantity: newQuantity }
-              : item
-          )
-        );
-      } else {
-        console.error('Failed to update product quantity');
-      }
-    } catch (error) {
-      console.error('Error updating product quantity:', error);
-    }
-  };
-
-  const removeItem = async (productId) => {
-    try {
-      const result = await removeProductFromCart(
-        user.cart._id,
-        productId,
-        token
-      );
-
-      if (result) {
-        setCartItems((prevItems) =>
-          prevItems.filter((item) => item.product._id !== productId)
-        );
-      } else {
-        console.error('Failed to remove product from cart');
-      }
-    } catch (error) {
-      console.error('Error removing product:', error);
-    }
   };
 
   return (
