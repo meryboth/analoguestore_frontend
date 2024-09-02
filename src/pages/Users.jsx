@@ -13,17 +13,25 @@ function Users() {
     role: 'user',
   });
 
+  // Mover loadUsers fuera de useEffect para poder llamarlo cuando sea necesario
+  const loadUsers = async () => {
+    const data = await fetchUsers(token);
+    setUsers(data);
+  };
+
   useEffect(() => {
-    const loadUsers = async () => {
-      const data = await fetchUsers(token);
-      setUsers(data);
-    };
     loadUsers();
   }, [token]);
 
   const handleDelete = async (id) => {
-    await deleteUser(id, token);
-    setUsers(users.filter((user) => user._id !== id));
+    try {
+      await deleteUser(id, token);
+      await loadUsers(); // Recargar la lista de usuarios después de eliminar uno
+      alert('User deleted successfully!');
+    } catch (error) {
+      console.error('Error deleting user:', error);
+      alert(`Error deleting user: ${error.message}`);
+    }
   };
 
   const handleUpdate = async (id, updatedData) => {
@@ -32,16 +40,26 @@ function Users() {
   };
 
   const handleCreate = async () => {
-    await createUser(newUser, token);
-    const data = await fetchUsers(token);
-    setUsers(data);
-    setNewUser({
-      first_name: '',
-      last_name: '',
-      email: '',
-      password: '',
-      role: 'user',
-    });
+    try {
+      const createdUser = await createUser(newUser, token);
+
+      if (createdUser) {
+        await loadUsers(); // Recargar la lista de usuarios después de crear uno nuevo
+        setNewUser({
+          first_name: '',
+          last_name: '',
+          email: '',
+          password: '',
+          role: 'user',
+        });
+        alert('User created successfully!');
+      } else {
+        alert('Failed to create user. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error creating user:', error);
+      alert(`Error creating user: ${error.message}`);
+    }
   };
 
   return (

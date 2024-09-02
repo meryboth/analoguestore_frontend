@@ -162,16 +162,8 @@ function Cart() {
                 key={item.product._id}
                 className='flex items-center justify-between mb-4 border-b pb-4'
               >
-                <img
-                  src={item.product.img || 'https://via.placeholder.com/150'}
-                  alt={item.product.title}
-                  className='w-20 h-20 object-cover'
-                />
                 <div className='flex-grow ml-4'>
                   <h2 className='text-xl font-bold'>{item.product.title}</h2>
-                  <p className='text-gray-600'>
-                    {item.product.description || 'No description available'}
-                  </p>
                 </div>
                 <div className='flex items-center'>
                   <input

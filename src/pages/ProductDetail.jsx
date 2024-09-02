@@ -39,9 +39,11 @@ function ProductDetail() {
       );
       if (result) {
         console.log('Product added to cart successfully', result);
+        alert('Product added to cart successfully');
         setTotalItems((prevTotal) => prevTotal + quantity);
       } else {
         console.error('Failed to add product to cart');
+        alert('You cant add your own product to the cart');
       }
     } catch (error) {
       console.error('Error adding product to cart:', error);
