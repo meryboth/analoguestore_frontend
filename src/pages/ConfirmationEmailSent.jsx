@@ -7,7 +7,8 @@ function ConfirmationEmailSent() {
         <h1 className='text-3xl font-semibold mb-4'>Revisa tu correo</h1>
         <p>
           Se ha enviado un enlace para restablecer tu contraseña a tu correo
-          electrónico. Por favor, revisa tu correo y sigue las instrucciones.
+          electrónico. Por favor, revisa tu correo y coloca a continuación el
+          código de validación.
         </p>
       </div>
     </section>

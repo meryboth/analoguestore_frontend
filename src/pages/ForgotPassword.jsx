@@ -17,7 +17,7 @@ function ForgotPassword() {
     });
 
     if (response.ok) {
-      navigate('/confirm-email-sent');
+      navigate('/validate-code');
     } else {
       alert('No se pudo enviar el correo de recuperación.');
     }
