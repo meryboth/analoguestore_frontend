@@ -11,22 +11,21 @@ function ValidateCode() {
   };
 
   return (
-    <section className='flex justify-center items-center h-screen bg-gray-100'>
-      <div className='bg-white p-8 rounded shadow-md w-full sm:w-96'>
-        <h1 className='text-3xl font-semibold mb-4'>Revisa tu correo</h1>
+    <section className='flex justify-center items-center h-screen bg-white'>
+      <div className='bg-white p-8 border border-gray-300 w-full sm:w-96'>
+        <h1 className='text-3xl font-semibold mb-4'>Check your email</h1>
         <p>
-          Se ha enviado un enlace para restablecer tu contraseña a tu correo
-          electrónico. Por favor, revisa tu correo y coloca a continuación el
-          código de validación.
+          A link to reset your password has been sent to your email address.
+          Please check your email and enter the validation code below.
         </p>
 
         <form onSubmit={handleValidateCode}>
           <div className='mb-4'>
             <label
               htmlFor='token'
-              className='block text-sm font-medium text-gray-700 mt-5'
+              className='block text-sm font-medium text-black mt-5'
             >
-              Código
+              Code
             </label>
             <input
               type='text'
@@ -34,14 +33,14 @@ function ValidateCode() {
               value={token}
               onChange={(e) => setToken(e.target.value)}
               required
-              className='mt-1 p-2 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500'
+              className='mt-1 p-2 block w-full border border-gray-300 focus:border-black'
             />
           </div>
           <button
             type='submit'
-            className='w-full bg-indigo-500 text-white p-2 rounded-md hover:bg-indigo-600 transition duration-300'
+            className='w-full bg-black text-white p-2 hover:bg-gray-800 transition duration-300'
           >
-            Validar código
+            Validate code
           </button>
         </form>
       </div>

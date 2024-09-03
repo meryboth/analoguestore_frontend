@@ -65,55 +65,59 @@ function Users() {
   return (
     <div className='container mx-auto p-4'>
       <h1 className='text-2xl font-bold mb-4'>Manage Users</h1>
-      <div className='mb-4'>
-        <h2 className='text-xl font-bold'>Create New User</h2>
-        <input
-          type='text'
-          placeholder='First Name'
-          value={newUser.first_name}
-          onChange={(e) =>
-            setNewUser({ ...newUser, first_name: e.target.value })
-          }
-          className='border p-2 mr-2'
-        />
-        <input
-          type='text'
-          placeholder='Last Name'
-          value={newUser.last_name}
-          onChange={(e) =>
-            setNewUser({ ...newUser, last_name: e.target.value })
-          }
-          className='border p-2 mr-2'
-        />
-        <input
-          type='email'
-          placeholder='Email'
-          value={newUser.email}
-          onChange={(e) => setNewUser({ ...newUser, email: e.target.value })}
-          className='border p-2 mr-2'
-        />
-        <input
-          type='password'
-          placeholder='Password'
-          value={newUser.password}
-          onChange={(e) => setNewUser({ ...newUser, password: e.target.value })}
-          className='border p-2 mr-2'
-        />
-        <select
-          value={newUser.role}
-          onChange={(e) => setNewUser({ ...newUser, role: e.target.value })}
-          className='border p-2 mr-2'
-        >
-          <option value='user'>User</option>
-          <option value='premium'>Premium</option>
-          <option value='admin'>Admin</option>
-        </select>
-        <button
-          onClick={handleCreate}
-          className='bg-blue-500 text-white p-2 rounded'
-        >
-          Create User
-        </button>
+      <div className='mb-4 w-full'>
+        <h2 className='text-xl font-bold mb-2'>Create New User</h2>
+        <div className='flex flex-wrap gap-2'>
+          <input
+            type='text'
+            placeholder='First Name'
+            value={newUser.first_name}
+            onChange={(e) =>
+              setNewUser({ ...newUser, first_name: e.target.value })
+            }
+            className='border p-2 flex-grow'
+          />
+          <input
+            type='text'
+            placeholder='Last Name'
+            value={newUser.last_name}
+            onChange={(e) =>
+              setNewUser({ ...newUser, last_name: e.target.value })
+            }
+            className='border p-2 flex-grow'
+          />
+          <input
+            type='email'
+            placeholder='Email'
+            value={newUser.email}
+            onChange={(e) => setNewUser({ ...newUser, email: e.target.value })}
+            className='border p-2 flex-grow'
+          />
+          <input
+            type='password'
+            placeholder='Password'
+            value={newUser.password}
+            onChange={(e) =>
+              setNewUser({ ...newUser, password: e.target.value })
+            }
+            className='border p-2 flex-grow'
+          />
+          <select
+            value={newUser.role}
+            onChange={(e) => setNewUser({ ...newUser, role: e.target.value })}
+            className='border p-2 flex-grow'
+          >
+            <option value='user'>User</option>
+            <option value='premium'>Premium</option>
+            <option value='admin'>Admin</option>
+          </select>
+          <button
+            onClick={handleCreate}
+            className='bg-black text-white p-2 flex-grow'
+          >
+            Create User
+          </button>
+        </div>
       </div>
 
       <h2 className='text-xl font-bold mb-2'>User List</h2>
@@ -139,7 +143,7 @@ function Users() {
                   onChange={(e) =>
                     handleUpdate(user._id, { role: e.target.value })
                   }
-                  className='border p-1'
+                  className='border p-1 w-full'
                 >
                   <option value='user'>User</option>
                   <option value='premium'>Premium</option>
@@ -149,7 +153,7 @@ function Users() {
               <td className='border px-4 py-2'>
                 <button
                   onClick={() => handleDelete(user._id)}
-                  className='bg-red-500 text-white p-1 rounded'
+                  className='bg-black text-white p-1 w-full'
                 >
                   Delete
                 </button>

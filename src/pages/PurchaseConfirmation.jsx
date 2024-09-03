@@ -7,38 +7,39 @@ function PurchaseConfirmation() {
 
   return (
     <div className='container mx-auto py-8'>
-      <h1 className='text-3xl font-bold mb-8'>Confirmación de Compra</h1>
+      <h1 className='text-3xl font-bold mb-8'>Purchase Confirmation</h1>
       {ticket ? (
         <div>
-          <p>¡Gracias por tu compra!</p>
+          <p>Thank you for your purchase!</p>
           <p>
-            Tu número de orden es: <strong>{ticket.code}</strong>
+            Your order number is: <strong>{ticket.code}</strong>
           </p>
-          <p>Total pagado: ${ticket.amount}</p>
+          <p>Total paid: ${ticket.amount}</p>
           <p>
-            Fecha de compra:{' '}
-            {new Date(ticket.purchase_datetime).toLocaleString()}
+            Purchase date: {new Date(ticket.purchase_datetime).toLocaleString()}
           </p>
           <p>
-            Un correo con los detalles de tu compra ha sido enviado a tu email.
+            An email with your purchase details has been sent to your email
+            address.
           </p>
         </div>
       ) : (
         <div>
-          <p>
-            No se pudieron comprar algunos productos debido a la falta de stock.
-          </p>
+          <p>Some products could not be purchased due to lack of stock.</p>
           {notPurchasedProducts.length > 0 && (
             <ul>
               {notPurchasedProducts.map((productId) => (
-                <li key={productId}>Producto ID: {productId}</li>
+                <li key={productId}>Product ID: {productId}</li>
               ))}
             </ul>
           )}
         </div>
       )}
-      <Link to='/shop' className='text-blue-500 hover:underline mt-4 block'>
-        Volver a la tienda
+      <Link
+        to='/shop'
+        className='text-black font-bold hover:underline mt-4 block'
+      >
+        Return to shop
       </Link>
     </div>
   );

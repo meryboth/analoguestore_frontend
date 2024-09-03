@@ -142,13 +142,13 @@ function Cart() {
 
   return (
     <div className='container py-8 mx-auto'>
-      <h1 className='text-3xl font-bold mb-8'>Your Cart</h1>
+      <h1 className='text-3xl font-bold mb-4 text-center'>Your Cart</h1>
 
       {cartItems.length === 0 ? (
         <div>
-          <p>
+          <p className='text-center'>
             Your cart is empty. Go to the{' '}
-            <a href='/shop' className='text-blue-500 hover:underline'>
+            <a href='/shop' className='text-black hover:underline'>
               Shop
             </a>{' '}
             to start adding products!
@@ -180,9 +180,9 @@ function Cart() {
                   </p>
                   <button
                     onClick={() => removeItem(item.product._id)}
-                    className='ml-4 text-red-600 hover:underline'
+                    className='ml-4 text-black hover:underline'
                   >
-                    Eliminar
+                    Remove
                   </button>
                 </div>
               </div>
@@ -190,14 +190,14 @@ function Cart() {
           </div>
 
           <div className='w-full'>
-            <div className='bg-gray-100 p-4 rounded'>
-              <h2 className='text-xl font-bold mb-4'>Resumen del Pedido</h2>
+            <div className='bg-black text-white p-4'>
+              <h2 className='text-xl font-bold mb-4'>Order Summary</h2>
               <div className='flex justify-between mb-2'>
                 <span>Subtotal</span>
                 <span>${calculateTotal()}</span>
               </div>
               <div className='flex justify-between mb-4'>
-                <span>Envío</span>
+                <span>Shipping</span>
                 <span>$5.00</span>
               </div>
               <div className='flex justify-between text-lg font-bold'>
@@ -206,9 +206,9 @@ function Cart() {
               </div>
               <button
                 onClick={handlePurchase}
-                className='bg-blue-500 text-white p-3 mt-4 w-full rounded hover:bg-blue-600'
+                className='bg-white text-black p-3 mt-4 w-full hover:bg-gray-200'
               >
-                Proceder al Pago
+                Proceed to Checkout
               </button>
             </div>
           </div>

@@ -18,7 +18,7 @@ function Shop() {
   return (
     <div>
       <header className='text-center py-8'>
-        <h1 className='text-4xl font-bold'>Shop All Products</h1>
+        <h1 className='text-4xl font-bold'>Our collection</h1>
       </header>
       <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mb-24'>
         {products.map((product) => (

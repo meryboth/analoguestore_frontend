@@ -9,6 +9,30 @@ function Navbar() {
     return (
       <nav className='flex justify-between items-center bg-zinc-950 p-4 text-white'>
         <div className='flex space-x-4'>
+          <svg
+            width='24px'
+            height='24px'
+            stroke-width='1.1'
+            viewBox='0 0 24 24'
+            fill='none'
+            xmlns='http://www.w3.org/2000/svg'
+            color='#FFFF'
+          >
+            <path
+              d='M12 7V17'
+              stroke='#FFFFFF'
+              stroke-width='1.1'
+              stroke-linecap='round'
+              stroke-linejoin='round'
+            ></path>
+            <path
+              d='M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z'
+              stroke='#FFFFFF'
+              stroke-width='1.1'
+              stroke-linecap='round'
+              stroke-linejoin='round'
+            ></path>
+          </svg>
           <Link to='/' className='hover:text-gray-300'>
             Home
           </Link>
@@ -99,7 +123,6 @@ function Navbar() {
         {renderLinks()}
       </div>
       <div className='flex items-center space-x-4'>
-        <span>{user.first_name}</span>
         <div className='flex'>
           <Link to='/cart' className='hover:text-gray-300'>
             <svg
@@ -128,6 +151,7 @@ function Navbar() {
             </svg>
           </Link>
           <p className='mx-2'>{totalItems}</p>
+          <span className='mx-2'>{user.first_name}</span>
         </div>
         <button onClick={logout} className='hover:text-gray-300'>
           <svg

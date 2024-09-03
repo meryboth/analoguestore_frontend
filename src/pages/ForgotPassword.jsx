@@ -24,14 +24,14 @@ function ForgotPassword() {
   };
 
   return (
-    <section className='flex justify-center items-center h-screen bg-gray-100'>
-      <div className='bg-white p-8 rounded shadow-md w-full sm:w-96'>
-        <h1 className='text-3xl font-semibold mb-4'>Restablecer contraseña</h1>
+    <section className='flex justify-center items-center h-[calc(100vh-8rem)] bg-white'>
+      <div className='bg-white p-8 w-full sm:w-96 border border-gray-300'>
+        <h1 className='text-3xl font-semibold mb-4'>Reset Password</h1>
         <form onSubmit={handleForgotPassword}>
           <div className='mb-4'>
             <label
               htmlFor='email'
-              className='block text-sm font-medium text-gray-700'
+              className='block text-sm font-medium text-black'
             >
               Email
             </label>
@@ -41,14 +41,14 @@ function ForgotPassword() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className='mt-1 p-2 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500'
+              className='mt-1 p-2 block w-full border-black focus:border-black'
             />
           </div>
           <button
             type='submit'
-            className='w-full bg-indigo-500 text-white p-2 rounded-md hover:bg-indigo-600 transition duration-300'
+            className='w-full bg-black text-white p-2 hover:bg-gray-800 transition duration-300'
           >
-            Enviar enlace
+            Send Link
           </button>
         </form>
       </div>
