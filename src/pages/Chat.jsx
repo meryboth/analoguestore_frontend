@@ -63,21 +63,21 @@ function Chat() {
   }
 
   return (
-    <div className='mx-10 mt-8 bg-white shadow-md rounded-lg overflow-hidden'>
-      <div className='bg-gray-200 p-4 border-b border-gray-300'>
-        <h2 className='text-lg font-semibold text-gray-800'>
-          Chat Comunitario
+    <div className='mx-10 mt-8 bg-white overflow-hidden border border-gray-300'>
+      <div className='p-4'>
+        <h2 className='text-lg font-semibold text-gray-800 text-center'>
+          Chat
         </h2>
       </div>
 
       <div
         id='messagesLogs'
-        className='p-6 space-y-4 h-[80vh] overflow-y-auto bg-gray-50'
+        className='p-6 space-y-4 h-[70vh] overflow-y-auto '
       >
         {messages.length > 0 ? (
           messages.map((msg, index) => (
             <div key={index} className='flex items-start space-x-4 mb-4'>
-              <div className='bg-blue-100 text-blue-800 px-4 py-2 rounded-lg max-w-xs'>
+              <div className='bg-gray-100 text-black px-4 py-2 rounded-lg max-w-xs'>
                 <strong className='block text-sm font-semibold'>
                   {msg.user || 'Anónimo'}
                 </strong>
@@ -90,7 +90,7 @@ function Chat() {
         )}
       </div>
 
-      <div className='bg-gray-100 p-4 border-t border-gray-300'>
+      <div className='p-4 border-t border-gray-300'>
         <div className='flex items-center'>
           <input
             type='text'
@@ -98,11 +98,11 @@ function Chat() {
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             onKeyUp={(e) => e.key === 'Enter' && handleSendMessage()}
-            className='flex-grow bg-white border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent'
+            className='flex-grow bg-white px-4 py-2 text-sm  focus:border-transparent'
           />
           <button
             onClick={handleSendMessage}
-            className='ml-2 bg-blue-500 text-white p-2 rounded hover:bg-blue-600'
+            className='ml-2 bg-black text-white p-2 rounded hover:bg-gray-900'
           >
             Enviar
           </button>

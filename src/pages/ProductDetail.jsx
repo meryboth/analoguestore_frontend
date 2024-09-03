@@ -55,9 +55,9 @@ function ProductDetail() {
   }
 
   return (
-    <div className='container mx-auto py-8'>
+    <div className='container mx-auto py-8 h-[80vh]'>
       <nav className='mb-4'>
-        <Link to='/shop' className='text-blue-500 hover:underline'>
+        <Link to='/shop' className='text-black hover:underline'>
           ← Volver a Productos
         </Link>
       </nav>
@@ -84,7 +84,7 @@ function ProductDetail() {
           </div>
           <button
             onClick={handleAddToCart}
-            className='bg-blue-500 text-white p-3 rounded hover:bg-blue-600'
+            className='bg-black text-white p-3 hover:bg-gray-900'
           >
             Añadir al Carrito
           </button>
