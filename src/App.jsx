@@ -22,7 +22,7 @@ import ConfirmationNewPassword from './pages/ConfirmationNewPassword';
 
 function App() {
   return (
-    <>
+    <div>
       <Navbar />
       <Routes>
         <Route path='/' element={<Home />} />
@@ -73,7 +73,7 @@ function App() {
         />
       </Routes>
       <Footer />
-    </>
+    </div>
   );
 }
 
