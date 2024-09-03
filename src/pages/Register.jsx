@@ -15,14 +15,17 @@ function Register() {
   };
 
   return (
-    <div className='flex justify-center items-center h-screen'>
-      <form onSubmit={handleSubmit} className='bg-white p-6 rounded shadow-md'>
-        <h2 className='text-2xl mb-4'>Register</h2>
+    <div className='flex justify-center items-center min-h-[calc(100vh-64px-64px)]'>
+      <form
+        onSubmit={handleSubmit}
+        className='bg-white p-8 border border-gray-300 w-full max-w-md'
+      >
+        <h2 className='text-2xl mb-6 font-bold'>Register</h2>
         <div className='mb-4'>
           <label className='block mb-2'>First Name</label>
           <input
             type='text'
-            className='border w-full p-2'
+            className='border w-full p-3'
             value={first_name}
             onChange={(e) => setFirstName(e.target.value)}
           />
@@ -31,7 +34,7 @@ function Register() {
           <label className='block mb-2'>Last Name</label>
           <input
             type='text'
-            className='border w-full p-2'
+            className='border w-full p-3'
             value={last_name}
             onChange={(e) => setLastName(e.target.value)}
           />
@@ -40,7 +43,7 @@ function Register() {
           <label className='block mb-2'>Email</label>
           <input
             type='email'
-            className='border w-full p-2'
+            className='border w-full p-3'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -49,23 +52,29 @@ function Register() {
           <label className='block mb-2'>Password</label>
           <input
             type='password'
-            className='border w-full p-2'
+            className='border w-full p-3'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <div className='mb-4'>
+        <div className='mb-6'>
           <label className='block mb-2'>Age</label>
           <input
             type='number'
-            className='border w-full p-2'
+            className='border w-full p-3'
             value={age}
             onChange={(e) => setAge(e.target.value)}
           />
         </div>
-        <button type='submit' className='bg-blue-500 text-white p-2 rounded'>
+        <button type='submit' className='bg-black text-white p-3 w-full mb-4'>
           Register
         </button>
+        <p className='text-sm text-center'>
+          Already have an account?{' '}
+          <a href='/login' className='text-black hover:underline font-bold'>
+            Login here
+          </a>
+        </p>
       </form>
     </div>
   );
