@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthContext';
 import { addProductToCart } from '../utils/api';
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
@@ -10,6 +10,7 @@ function ProductDetail() {
   const [quantity, setQuantity] = useState(1);
   const { user, token, fetchAndSetCart, setTotalItems } =
     useContext(AuthContext);
+  const navigate = useNavigate(); // Para redirigir al login
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -24,9 +25,11 @@ function ProductDetail() {
 
     fetchProduct();
   }, [id]);
+
   const handleAddToCart = async () => {
     if (!user) {
-      console.error('User not authenticated');
+      alert('You need to log in to add products to your cart.');
+      navigate('/login'); // Redirige al usuario a la página de login
       return;
     }
 
@@ -43,7 +46,7 @@ function ProductDetail() {
         setTotalItems((prevTotal) => prevTotal + quantity);
       } else {
         console.error('Failed to add product to cart');
-        alert('You cant add your own product to the cart');
+        alert('You cannot add your own product to the cart');
       }
     } catch (error) {
       console.error('Error adding product to cart:', error);
@@ -58,7 +61,7 @@ function ProductDetail() {
     <div className='container mx-auto py-8 h-[80vh]'>
       <nav className='mb-4'>
         <Link to='/shop' className='text-black hover:underline'>
-          ← Volver a Productos
+          ← Back to Products
         </Link>
       </nav>
       <div className='flex flex-col md:flex-row'>
@@ -72,7 +75,7 @@ function ProductDetail() {
           <p className='text-gray-700 mb-4'>{product.description}</p>
           <p className='text-xl font-bold mb-4'>${product.price}</p>
           <div className='mb-4'>
-            <label className='mr-2'>Cantidad:</label>
+            <label className='mr-2'>Quantity:</label>
             <input
               type='number'
               value={quantity}
@@ -86,7 +89,7 @@ function ProductDetail() {
             onClick={handleAddToCart}
             className='bg-black text-white p-3 hover:bg-gray-900'
           >
-            Añadir al Carrito
+            Add to Cart
           </button>
         </div>
       </div>
