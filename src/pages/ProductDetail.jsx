@@ -87,7 +87,7 @@ function ProductDetail() {
           </div>
           <button
             onClick={handleAddToCart}
-            className='bg-black text-white p-3 hover:bg-gray-900'
+            className='bg-black text-white p-3 hover:bg-gray-900 w-full'
           >
             Add to Cart
           </button>

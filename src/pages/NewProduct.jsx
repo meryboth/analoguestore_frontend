@@ -63,7 +63,7 @@ function NewProduct() {
   };
 
   return (
-    <div className='max-w-2xl mx-auto bg-white p-8 rounded-md shadow-md'>
+    <div className='max-w-2xl mx-auto bg-white p-8'>
       <h2 className='text-2xl font-bold mb-6'>Add New Product</h2>
       <form onSubmit={handleSubmit}>
         <div className='mb-4'>
@@ -216,7 +216,7 @@ function NewProduct() {
           <button
             type='button'
             onClick={addThumbnailField}
-            className='text-blue-500 hover:underline'
+            className='text-black hover:underline'
           >
             Add another thumbnail
           </button>
@@ -224,7 +224,7 @@ function NewProduct() {
 
         <button
           type='submit'
-          className='w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600'
+          className='w-full bg-black text-white py-2 px-4 rounded hover:bg-gray-800'
         >
           Add Product
         </button>
